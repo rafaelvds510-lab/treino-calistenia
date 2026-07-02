@@ -1,16 +1,27 @@
-app = "treino-calistenia"
-primary_region = "gru"
+# fly.toml app configuration file generated for treino-calistenia on 2026-07-02T13:59:07Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
+app = 'treino-calistenia'
+primary_region = 'gru'
 
+[build]
 
 [env]
-  PORT = "3000"
-  NODE_ENV = "production"
+  NODE_ENV = 'production'
+  PORT = '3000'
 
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 1
-  processes = ["app"]
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 256
